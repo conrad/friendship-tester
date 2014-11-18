@@ -1,4 +1,7 @@
 var secrets = require('../config/secrets');
+var google = require('googleapis');
+var plus = google.plus('v1');
+var OAuth2 = google.auth.OAuth2;
 var User = require('../models/User');
 var querystring = require('querystring');
 var validator = require('validator');
@@ -118,15 +121,29 @@ exports.getFacebook = function(req, res, next) {
   });
 };
 
+
+
+
+
 exports.getGoogle = function(req, res, next) {
+  var CLIENT_ID = "828110519058.apps.googleusercontent.com";
+  var CLIENT_SECRET = "JdZsIaWhUFIchmC1a_IZzOHb";
+  var REDIRECT_URL = "/auth/google/callback";
+  var oauth2Client = new OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL);
   var token = _.find(req.user.tokens, { kind: 'google' });
   console.log(token);
-  
-  res.json({
-    title: 'Facebook API',
-    me: "herro",
-    friends: "herro"
+  oauth2Client.setCredentials({
+    access_token: token.accessToken
   });
+  plus.people.get({ userId: 'me', auth: oauth2Client }, function(err, response) {
+    if (err) console.log(err);
+    res.json({
+      title: 'Google API',
+      me: token,
+      friends: response
+    });
+  });
+  
 
 };
 
