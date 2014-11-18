@@ -1,11 +1,22 @@
 $(document).ready(function() {
+<<<<<<< HEAD
 
   var friends, index, count, photo;
 
+=======
+  var _;
+  var friends, index, count;
+>>>>>>> d23c6b4a8d3e716545441c557de5bcf6efb3bf21
   var $quiz_container = ("<div class='quiz_container'></div>");
 
   $.ajax("/api/facebook").done(function(data){
-  	
+
+    //Select a random set of 20 ids
+
+    friends = _.shuffle(_.sample(data, 20));
+
+    console.log(friends);
+
   	$(".row").after().append($quiz_container);
   	var $banner = $("<div class='banner'></div>");
   	$(".quiz_container").append($banner);
@@ -21,6 +32,7 @@ $(document).ready(function() {
     friends = data.friends;
     
     while (count > 0) {
+<<<<<<< HEAD
       // Load random photo
       index = Math.floor(Math.random() * friends.length)
       // Fill an array of id's?
@@ -30,6 +42,10 @@ $(document).ready(function() {
       user_photo[id]
 
       count -= 1;
+=======
+  	console.log(friends[count]["id"]);
+  	count -= 1;
+>>>>>>> d23c6b4a8d3e716545441c557de5bcf6efb3bf21
   	}
     // for (var i = 0; i < 10; i++) {
     // }
