@@ -1,12 +1,10 @@
 $(document).ready(function() {
-<<<<<<< HEAD
 
-  var friends, index, count, photo;
+  var friends, index, count;
 
-=======
   var _;
   var friends, index, count;
->>>>>>> d23c6b4a8d3e716545441c557de5bcf6efb3bf21
+
   var $quiz_container = ("<div class='quiz_container'></div>");
 
   $.ajax("/api/facebook").done(function(data){
@@ -30,22 +28,23 @@ $(document).ready(function() {
     id;
   	var id_array = [];
     friends = data.friends;
+    var $photo = $("<div id='photo'></div");
     
     while (count > 0) {
-<<<<<<< HEAD
       // Load random photo
       index = Math.floor(Math.random() * friends.length)
       // Fill an array of id's?
       id = friends[index]["id"];
       id_array.push(id);
-      // Or we could just load the photo here and have them guess
-      user_photo[id]
+      
+      // Add the photo
+      $("#photo").html("<img src='user_photo[id]'>");    // what is the actual src that will work???
 
-      count -= 1;
-=======
-  	console.log(friends[count]["id"]);
-  	count -= 1;
->>>>>>> d23c6b4a8d3e716545441c557de5bcf6efb3bf21
+      // Add answer field
+      
+
+      $("#photo").empty()
+    	count -= 1;
   	}
     // for (var i = 0; i < 10; i++) {
     // }
@@ -53,6 +52,5 @@ $(document).ready(function() {
 
 
   //console.log(data);
-  //  $('#content').html(JSON.stringify(friends));
   });
 });
