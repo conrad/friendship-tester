@@ -7,8 +7,10 @@ block content
       .banner What's my name?
       .quiz-container
 
-      form.form-inline(role='form')
-        .form-group.has-success.has-feedback
-            input#guess.form-control(type='text', aria-describedby='guess')
-            i.ion-checkmark.icon.form-control-feedback(aria-hidden='true')
-      
+      .form-group.has-warning.has-feedback
+          input#guess.form-control(type='text', aria-describedby='guess' placeholder="Enter your guess here")
+          i.ion-checkmark.icon.form-control-feedback(aria-hidden='true')
+      p.helptext 
+      button.skip No clue
+      button.hint Give me a hint
+    
