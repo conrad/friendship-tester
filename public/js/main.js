@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-  var _;
   var friends, index, count, me;
   var $quiz_container = $("<div class='quiz_container'></div>");
   var $banner = $("<div class='banner'></div>");
