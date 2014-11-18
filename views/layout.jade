@@ -9,11 +9,10 @@ html
     != css('main')
   body
 
-    //include partials/navbar
-
     .container
       include partials/flash
-      block content
+
+    h1(class="text-center") How well do you know your friends? 
 
     if !user
       a.btn.btn-block.btn-social(href='/auth/facebook')
@@ -22,10 +21,14 @@ html
       a.btn.btn-block.btn-social(href='/auth/google')
         i.fa.fa-google-plus
         | Sign in with Google  
+      h3(class="text-center") Leaderboard
+      
     else
+      block content
       a.btn.btn-block.btn-social(href='/logout')
         i.ion-log-out
         |  Logout  
+
 
 
     != js('application')
