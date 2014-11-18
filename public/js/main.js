@@ -1,4 +1,6 @@
 $(document).ready(function() {
+
+  var _;
   var friends, index, count, me;
   var $quiz_container = $("<div class='quiz_container'></div>");
   var $banner = $("<div class='banner'></div>");
@@ -44,6 +46,7 @@ $(document).ready(function() {
   	var count = 10,
   	var id_array = [];
     friends = data.friends;
+    var $photo = $("<div id='photo'></div");
     
     while (count > 0) {
       // Load random photo
@@ -51,6 +54,24 @@ $(document).ready(function() {
       // Fill an array of id's?
       id = friends[index]["id"];
       id_array.push(id);
+<<<<<<< HEAD
+      
+      // Add the photo
+      $("#photo").html("<img src='user_photo[id]'>");    // what is the actual src that will work???
+
+      // Add answer field
+      
+
+      $("#photo").empty()
+    	count -= 1;
+  	}
+    // for (var i = 0; i < 10; i++) {
+    // }
+
+
+
+  //console.log(data);
+=======
       // Or we could just load the photo here and have them guess
       user_photo[id]
 
