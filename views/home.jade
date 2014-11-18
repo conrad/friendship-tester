@@ -1,12 +1,15 @@
 extends layout
 
 block content
-  h1 Do you know your friends?
+  h1(class="text-center") Do you know your friends?
   hr
   .row
     .col-sm-12#content
-    .col-sm-12
+      .banner What's my name?
+      .quiz-container
+
       form.form-inline(role='form')
         .form-group.has-success.has-feedback
             input#guess.form-control(type='text', aria-describedby='guess')
             i.ion-checkmark.icon.form-control-feedback(aria-hidden='true')
+      

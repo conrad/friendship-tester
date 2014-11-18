@@ -1,10 +1,8 @@
 $(document).ready(function() {
 
   var friends, index, count, me;
-  var $quiz_container = $("<div class='quiz_container'></div>");
-  var $banner = $("<div class='banner'></div>");
+  var $quiz_container = $(".quiz-container");
   var $guess = $("#guess");
-  var $whats_my_name = $("<div id='what'></div>");
 
   var renderFriend = function(){
     if(friends.length > 0){
@@ -23,11 +21,6 @@ $(document).ready(function() {
       //handle failure
     }
   }
-
-  $(".row").after().append($quiz_container);
-  $(".quiz_container").append($banner);
-  $whats_my_name.html("WHAT'S MY NAME?");
-  $banner.append($whats_my_name).hide().fadeIn("6000");
 
   $("#guess").keyup(function(){
     guess();
