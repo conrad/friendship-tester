@@ -1,5 +1,13 @@
 $(document).ready(function() {
 
-  // Place JavaScript code here...
+  var friends;
+
+  $.ajax("/api/facebook").done(function(data){
+    console.log(data);
+    friends = data.friends;
+    $('#content').html(JSON.stringify(friends));
+  });
+
+
 
 });

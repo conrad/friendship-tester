@@ -110,7 +110,7 @@ exports.getFacebook = function(req, res, next) {
   },
   function(err, results) {
     if (err) return next(err);
-    res.render('api/facebook', {
+    res.json({
       title: 'Facebook API',
       me: results.getMe,
       friends: results.getMyFriends
