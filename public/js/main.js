@@ -1,7 +1,9 @@
 $(document).ready(function() {
   var friends, index, count, me;
   var $quiz_container = $("<div class='quiz_container'></div>");
+  var $banner = $("<div class='banner'></div>");
   var $guess = $("#guess");
+  var $whats_my_name = $("<div id='what'></div>");
 
   var renderFriend = function(){
     if(friends.length > 0){
@@ -21,10 +23,12 @@ $(document).ready(function() {
   }
 
   $(".row").after().append($quiz_container);
+  $(".quiz_container").append($banner);
+  $whats_my_name.html("WHAT'S MY NAME?");
+  $banner.append($whats_my_name).hide().fadeIn("4000");
 
   $("#submit").click(function(){
     guess();
-
   });
 
   $.ajax("/api/facebook").done(function(data){
@@ -36,14 +40,6 @@ $(document).ready(function() {
     renderFriend();
     
    /* 
-  	var $banner = $("<div class='banner'></div>");
-  	$(".quiz_container").append($banner);
-
-  	var $whats_my_name = $("<div id='what'></div>");
-
-  	$whats_my_name.html("WHAT'S MY NAME?");
-		$banner.append($whats_my_name).hide().fadeIn("4000");
-
   	var count = 10,
   	var id_array = [];
     friends = data.friends;
