@@ -5,8 +5,10 @@ block content
   hr
   .row
     .col-sm-12#content
-    .col-sm-12#input
+    .col-sm-12
       form.form-inline(role='form')
         .form-group.has-success.has-feedback
-            input#inputSuccess4.form-control(type='text', aria-describedby='inputSuccess4Status')
+            input#guess.form-control(type='text', aria-describedby='guess')
             span.glyphicon.glyphicon-ok.form-control-feedback(aria-hidden='true')
+    button#submit 
+      | Guess
