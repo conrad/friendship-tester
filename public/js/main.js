@@ -27,7 +27,7 @@ $(document).ready(function() {
   $(".row").after().append($quiz_container);
   $(".quiz_container").append($banner);
   $whats_my_name.html("WHAT'S MY NAME?");
-  $banner.append($whats_my_name).hide().fadeIn("4000");
+  $banner.append($whats_my_name).hide().fadeIn("6000");
 
   $("#guess").keyup(function(){
     guess();
