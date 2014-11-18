@@ -3,6 +3,7 @@ $(document).ready(function() {
   var friends, index, count, me;
   var $quiz_container = $(".quiz-container");
   var $guess = $("#guess");
+  var $content = $("#content");
 
   var renderFriend = function(){
     if(friends.length > 0){
@@ -27,7 +28,7 @@ $(document).ready(function() {
   });
 
   $.ajax("/api/facebook").done(function(data){
-
+    $content.fadeIn(300);
     //Select a random set of 20 ids
     friends = _.shuffle(_.sample(data.friends, 20));
     me = data.me;
