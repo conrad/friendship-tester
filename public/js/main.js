@@ -1,16 +1,21 @@
 $(document).ready(function() {
 
   var friends, index, count, me, success_image;
-  var $quiz_container = $("<div class='quiz_container'></div>");
+  var $quiz_container = $("<div class='quiz_container' margin='90px' padding='50px'></div>");
+  // $quiz_container.css({"margin":"30px", "padding": "30px"})
   var $banner = $("<div class='banner'></div>");
   var $guess = $("#guess");
+  var $content = $("#content");
   var $whats_my_name = $("<div id='what'></div>");
-  // var $success = $("<div id='success'><img src='../img/success-1.png'></div>");
-  // ?var $success_image = $("<img>")
-  // $success.attr("src", "/img/success-1")
-  // var success_array = ["/img/success-1", "/img/success-2", "../img/success-3", "/img/success-4", "/img/success-5", "/img/success-6"];
+  $whats_my_name.html("WHAT'S MY NAME?");
+
+  // var $success = $("<div id='success'></div>");
+  // var $success_image = $("<img width='400', height='400' />")
+  // var success_array = ["../img/success-1", "../img/success-2", "../img/success-3", "../img/success-4", "../img/success-5", "../img/success-6"];
+  var $success = $("<div id='success'><img src='../img/success-3.png', width='400', height='400' /></div>");
+
   $not_success = $("<div class='fail'></div>");
-  $not_success.text("That's not quite it")
+  $not_success.text("Hmmmmm, that's not quite it yet...");
 
   var renderFriend = function(){
     if(friends.length > 0){
@@ -23,21 +28,28 @@ $(document).ready(function() {
   var guess = function(){
     if( $guess.val() === friends[0].name){
       //maybe wait a second, display success, then next
-      $(".quiz_container").prepend("<img src='../img/success-1.png', width='400', height='400' />");
-      console.log($success);
+      // index = Math.floor(Math.random() * success_array.length);
+      // $success_image.attr("src", success_array[index].val());
+      $(".quiz_container").prepend($success);
+      $success.on("click", function() {
+        $("#success").remove();
+        friends.shift();  
+        renderFriend();
+      });
+      
 
-      _.delay(friends.shift(), 5000);
-      renderFriend();
     } else {
+      // Things go crazy whenever I put anythig
       //handle failure
-
-
+      // if ($guess.length > 8) {
+        // $(".quiz_container").prepend($not_success);
+      // } //else if ($guess.)
+      // }
     }
-  }
+  };
 
   $(".row").after().append($quiz_container);
   $(".quiz_container").prepend($banner);
-  $whats_my_name.html("WHAT'S MY NAME?");
   $banner.prepend($whats_my_name); //.hide().fadeIn("6000");
 
   $("#guess").keyup(function(){
@@ -45,7 +57,7 @@ $(document).ready(function() {
   });
 
   $.ajax("/api/facebook").done(function(data){
-
+    $content.fadeIn(300);
     //Select a random set of 20 ids
     friends = _.shuffle(_.sample(data.friends, 20));
     me = data.me;
