@@ -29,8 +29,7 @@ $(document).ready(function() {
   	friends = data.friends;
     
     while (count > 0) {
-
-  	console.log(friends[0]["id"]);
+  	console.log(friends[count]["id"]);
   	count -= 1;
   	}
 
