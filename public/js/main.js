@@ -7,7 +7,7 @@ $(document).ready(function() {
 
   var renderFriend = function(){
     if(friends.length > 0){
-      $quiz_container.html("<img src='https://graph.facebook.com/" + friends[0].id + "/picture?type=large', width='120', height='120'></img>");
+      $quiz_container.html("<img src='https://graph.facebook.com/" + friends[0].id + "/picture?type=large', width='200', height='200'></img>");
     } else {
       $quiz_container.text("Hooray. You're done.");
     }
@@ -15,6 +15,7 @@ $(document).ready(function() {
 
   var guess = function(){
     if( $guess.val() === friends[0].name){
+      //maybe wait a second, display success, then next
       friends.shift();
       renderFriend();
     } else {
@@ -27,7 +28,7 @@ $(document).ready(function() {
   $whats_my_name.html("WHAT'S MY NAME?");
   $banner.append($whats_my_name).hide().fadeIn("4000");
 
-  $("#submit").click(function(){
+  $("#guess").keyup(function(){
     guess();
   });
 
