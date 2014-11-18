@@ -1,10 +1,16 @@
 $(document).ready(function() {
-
+  var _;
   var friends, index, count;
   var $quiz_container = ("<div class='quiz_container'></div>");
 
   $.ajax("/api/facebook").done(function(data){
-  	
+
+    //Select a random set of 20 ids
+
+    friends = _.shuffle(_.sample(data, 20));
+
+    console.log(friends);
+
   	$(".row").after().append($quiz_container);
   	var $banner = $("<div class='banner'></div>");
   	$(".quiz_container").append($banner);
