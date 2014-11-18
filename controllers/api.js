@@ -118,6 +118,18 @@ exports.getFacebook = function(req, res, next) {
   });
 };
 
+exports.getGoogle = function(req, res, next) {
+  var token = _.find(req.user.tokens, { kind: 'google' });
+  console.log(token);
+  
+  res.json({
+    title: 'Facebook API',
+    me: "herro",
+    friends: "herro"
+  });
+
+};
+
 /**
  * GET /api/scraping
  * Web scraping example using Cheerio library.

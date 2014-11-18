@@ -146,6 +146,7 @@ app.post('/api/clockwork', apiController.postClockwork);
 app.get('/api/foursquare', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.getFoursquare);
 app.get('/api/tumblr', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.getTumblr);
 app.get('/api/facebook', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.getFacebook);
+app.get('/api/google', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.getGoogle);
 app.get('/api/github', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.getGithub);
 app.get('/api/twitter', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.getTwitter);
 app.post('/api/twitter', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.postTwitter);
