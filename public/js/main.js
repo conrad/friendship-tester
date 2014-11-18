@@ -1,12 +1,12 @@
 $(document).ready(function() {
 
-  var friends, index, count, me, hints;
+  var friends, index, count, me, hints, percentage;
   var $quiz_container = $(".quiz-container");
   var $guess = $("#guess");
   var $form = $(".form-group");
   var $form_feedback = $(".form-control-feedback");
   var $content = $("#content");
-  var $helptext = $(".helptext")
+  var $helptext = $(".helptext");
   count = 0;
   hints = 0;
 
@@ -20,12 +20,14 @@ $(document).ready(function() {
       $quiz_container.html("<img src='https://graph.facebook.com/" + friends[0].id + "/picture?type=large'></img>");
     } else {
         $content.html("<h2>You finished!</h2>");
+        percentage = Math.floor(count / 20 * 100);
+        $content.append("<h2>" + percentage + "%</h2>");
       if (count > 15) {
-        $content.append("<p>Well, I guess you actually are a good friend. \n You got " + count + " out of 20.</p>");
+        $content.append("<p>Well, I guess you're actually a pretty good friend. \n You got " + count + " out of 20.</p>");
       } else if (count > 10) {
-        $content.append("<p>You might be a little generous with the term 'friend', aren't you? \n" + count + "out of 20.</p>");
+        $content.append("<p>You might be a little generous with the term \"friend\", aren't you?  \n" + count + "out of 20.</p>");
       } else if (count > 5) {
-        $content.append("<p>YOU DON'T EVEN KNOW HALF OF THESE PEOPLE. \n" + count + " out of 20.\n BOOOOOOOOOOOOO!</p>");
+        $content.append("<p>You don't know even HALF of your FRIENDS.  \n" + count + " out of 20.\n BOOOOOOOOOOOOO!</p>");
       } else {
         $content.append("<p>I really don't know what to say ... only " + count + "?</p>");
       }
