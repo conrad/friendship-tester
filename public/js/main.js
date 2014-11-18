@@ -8,7 +8,7 @@ $(document).ready(function() {
 
   var renderFriend = function(){
     if(friends.length > 0){
-      $quiz_container.html("<img src='https://graph.facebook.com/" + friends[0].id + "/picture?type=large', width='200', height='200'></img>");
+      $quiz_container.html("<img src='https://graph.facebook.com/" + friends[0].id + "/picture?type=large'></img>");
     } else {
       $quiz_container.text("Hooray. You're done.");
     }
