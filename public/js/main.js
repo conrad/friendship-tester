@@ -19,7 +19,16 @@ $(document).ready(function() {
       $form_feedback.hide();
       $quiz_container.html("<img src='https://graph.facebook.com/" + friends[0].id + "/picture?type=large'></img>");
     } else {
-      $quiz_container.text("Hooray. You're done.");
+        $content.html("<h2>You finished!</h2>");
+      if (count > 15) {
+        $content.append("<p>Well, I guess you actually are a good friend. \n You got " + count + " out of 20.</p>");
+      } else if (count > 10) {
+        $content.append("<p>You might be a little generous with the term 'friend', aren't you? \n" + count + "out of 20.</p>");
+      } else if (count > 5) {
+        $content.append("<p>YOU DON'T EVEN KNOW HALF OF THESE PEOPLE. \n" + count + " out of 20.\n BOOOOOOOOOOOOO!</p>");
+      } else {
+        $content.append("<p>I really don't know what to say ... only " + count + "?</p>");
+      }
     }
   };
 
@@ -69,7 +78,7 @@ $(document).ready(function() {
 
   $.ajax("/api/facebook").done(function(data){
     $content.fadeIn(300);
-    friends = _.shuffle(_.sample(data.friends, 20));
+    friends = _.shuffle(_.sample(data.friends,20));
     me = data.me;
     console.log(friends);
     renderFriend();
