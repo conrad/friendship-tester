@@ -80,7 +80,7 @@ $(document).ready(function() {
 
   $.ajax("/api/facebook").done(function(data){
     $content.fadeIn(300);
-    friends = _.shuffle(_.sample(data.friends,5));
+    friends = _.shuffle(_.sample(data.friends,20));
     me = data.me;
     console.log(friends);
     renderFriend();
